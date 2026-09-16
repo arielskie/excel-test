@@ -1,5 +1,5 @@
 [
-  { "id": 101, "testerName": "01STSGP", "status": "Active" },
-  { "id": 102, "testerName": "02STSLM2", "status": "Pending" },
-  { "id": 103, "testerName": "03STSM3", "status": "Active" }
+  { "id": 101, "tester": "01STSGP", "problem": "No display", "status": "Active" },
+  { "id": 102, "tester": "02STSLM2", "problem": "Power failure", "status": "Pending" },
+  { "id": 103, "tester": "03STSM3", "problem": "Connection drop", "status": "Active" }
 ]
