@@ -1,11 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Company Data Test</title>
+    <title>Company Data Input</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        form { margin-bottom: 20px; padding: 15px; border: 1px solid #ccc; max-width: 400px; }
+        input, select { width: 100%; margin: 8px 0; padding: 8px; box-sizing: border-box; }
+        button { background-color: #0078d4; color: white; padding: 10px; border: none; cursor: pointer; width: 100%; }
+        table { border-collapse: collapse; width: 100%; max-width: 500px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
 </head>
 <body>
-    <h2>Live Production Data</h2>
-    <table border="1">
+
+    <h2>Add New Entry</h2>
+    <form id="dataForm">
+        <label>ID:</label>
+        <input type="number" id="inputId" required placeholder="e.g. 103">
+
+        <label>Tester Name:</label>
+        <input type="text" id="inputName" required placeholder="e.g. 03STSM3">
+
+        <label>Status:</label>
+        <select id="inputStatus">
+            <option value="Active">Active</option>
+            <option value="Pending">Pending</option>
+            <option value="Completed">Completed</option>
+        </select>
+
+        <button type="submit">Add Row to Table</button>
+    </form>
+
+    <h2>Live Table Data</h2>
+    <table id="dataTable">
         <thead>
             <tr>
                 <th>ID</th>
@@ -14,17 +42,28 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>101</td>
-                <td>01STSGP</td>
-                <td>Active</td>
-            </tr>
-            <tr>
-                <td>102</td>
-                <td>02STSLM2</td>
-                <td>Pending</td>
-            </tr>
+            <tr><td>101</td><td>01STSGP</td><td>Active</td></tr>
+            <tr><td>102</td><td>02STSLM2</td><td>Pending</td></tr>
         </tbody>
     </table>
+
+    <script>
+        document.getElementById('dataForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const id = document.getElementById('inputId').value;
+            const name = document.getElementById('inputName').value;
+            const status = document.getElementById('inputStatus').value;
+
+            // Append new row to HTML table
+            const table = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow();
+            newRow.innerHTML = `<td>${id}</td><td>${name}</td><td>${status}</td>`;
+
+            // Clear inputs
+            document.getElementById('dataForm').reset();
+        });
+    </script>
 </body>
 </html>
